@@ -65,7 +65,7 @@ def get_patch_epithelium_stroma_mask(input_path):
             output = net(x)
             output = torch.sigmoid(output)
             pred = output.detach().squeeze().cpu().numpy()
-            mask_pred = (pred>.9).astype(np.uint8)
+            mask_pred = (pred>.8).astype(np.uint8)
             pil_mask_pred = Image.fromarray(mask_pred*255)
             np_mask_pred = (np.array(pil_mask_pred)/255).astype(np.uint8)
 
